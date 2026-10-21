@@ -12,11 +12,18 @@
   align-items: center;
   gap: 10px;
   transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer; /* indica que o card é clicável */
 }
 
 .pokemon-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Foco via teclado */
+.pokemon-card:focus-visible {
+  outline: 3px solid #cc0000;
+  outline-offset: 2px;
 }
 
 /* Cabeçalho: número + nome */

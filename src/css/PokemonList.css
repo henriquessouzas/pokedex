@@ -12,11 +12,31 @@
   margin: 0 auto;
 }
 
-/* Mensagem quando nenhum card é exibido */
+/* Estado vazio — nenhum Pokémon encontrado */
 .pokemon-list__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
   text-align: center;
-  color: #888;
-  font-size: 1.1rem;
-  padding: 48px 24px;
-  grid-column: 1 / -1; /* ocupa todas as colunas */
+  gap: 8px;
+}
+
+.pokemon-list__empty-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.pokemon-list__empty-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #444;
+}
+
+.pokemon-list__empty-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #999;
 }

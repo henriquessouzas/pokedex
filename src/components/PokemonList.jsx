@@ -7,9 +7,17 @@ import '../css/PokemonList.css'
  *   pokemons: array de objetos Pokémon
  */
 function PokemonList({ pokemons }) {
-  // Exibe mensagem caso o array esteja vazio (ex: filtro sem resultado)
+  // Exibe mensagem amigável quando nenhum Pokémon bate com a pesquisa
   if (pokemons.length === 0) {
-    return <p className="pokemon-list__empty">Nenhum Pokémon encontrado.</p>
+    return (
+      <div className="pokemon-list__empty">
+        <span className="pokemon-list__empty-icon" aria-hidden="true">😵</span>
+        <p className="pokemon-list__empty-title">Nenhum Pokémon encontrado</p>
+        <p className="pokemon-list__empty-hint">
+          Tente pesquisar por outro nome ou número.
+        </p>
+      </div>
+    )
   }
 
   return (

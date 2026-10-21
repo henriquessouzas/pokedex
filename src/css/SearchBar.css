@@ -1,0 +1,42 @@
+/* =============================================
+   SearchBar — campo de pesquisa
+   ============================================= */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 16px;
+  gap: 8px;
+  max-width: 480px;
+  width: 100%;
+  /* sombra suave no foco */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-bar:focus-within {
+  border-color: #cc0000;
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.15);
+}
+
+.search-bar__icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  color: #999;
+}
+
+.search-bar__input {
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: #333;
+  width: 100%;
+  background: transparent;
+}
+
+/* Remove o "x" padrão do tipo search no Chrome/Edge */
+.search-bar__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}

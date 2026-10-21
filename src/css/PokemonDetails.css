@@ -1,0 +1,170 @@
+/* =============================================
+   PokemonDetails — modal de detalhes
+   ============================================= */
+
+/* Overlay escuro cobre toda a tela */
+.details-overlay {
+  position: fixed;
+  inset: 0;                       /* top/right/bottom/left = 0 */
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 16px;
+  /* Animação de entrada */
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Caixa do modal */
+.details-modal {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.18s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Cabeçalho colorido ── */
+.details-modal__header {
+  position: relative;
+  padding: 24px 20px 20px;
+  border-radius: 16px 16px 0 0;
+  color: #fff;
+  text-align: center;
+}
+
+.details-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+}
+
+.details-modal__close:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.details-modal__id {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-bottom: 2px;
+}
+
+.details-modal__name {
+  margin: 0 0 10px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Badges de tipo no modal */
+.details-modal__types {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.details-modal__badge {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.4px;
+}
+
+/* ── Imagem grande ── */
+.details-modal__image-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 8px;
+  background-color: #fafafa;
+}
+
+.details-modal__image {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  /* sem pixelated aqui — o official-artwork é HD */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* ── Barras de stats ── */
+.details-modal__stats {
+  padding: 16px 24px 24px;
+}
+
+.details-modal__stats-title {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #888;
+}
+
+/* Linha de um stat */
+.stat-bar {
+  display: grid;
+  grid-template-columns: 72px 36px 1fr;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.stat-bar__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #666;
+  text-align: right;
+}
+
+.stat-bar__value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #333;
+  text-align: right;
+}
+
+/* Trilha cinza de fundo */
+.stat-bar__track {
+  height: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Preenchimento colorido */
+.stat-bar__fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}

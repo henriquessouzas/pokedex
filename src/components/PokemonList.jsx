@@ -4,9 +4,10 @@ import '../css/PokemonList.css'
 /**
  * PokemonList — renderiza a grade com todos os cards
  * Props:
- *   pokemons: array de objetos Pokémon
+ *   pokemons : array de objetos Pokémon
+ *   onSelect : função chamada com o Pokémon clicado (abre o modal)
  */
-function PokemonList({ pokemons }) {
+function PokemonList({ pokemons, onSelect }) {
   // Exibe mensagem amigável quando nenhum Pokémon bate com a pesquisa
   if (pokemons.length === 0) {
     return (
@@ -23,7 +24,7 @@ function PokemonList({ pokemons }) {
   return (
     <main className="pokemon-list">
       {pokemons.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        <PokemonCard key={pokemon.id} pokemon={pokemon} onSelect={onSelect} />
       ))}
     </main>
   )

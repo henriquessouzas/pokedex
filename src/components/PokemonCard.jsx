@@ -9,13 +9,22 @@ function formatId(id) {
 /**
  * PokemonCard — exibe as informações de um único Pokémon
  * Props:
- *   pokemon: objeto com id, name, types[] e stats{}
+ *   pokemon  : objeto com id, name, types[] e stats{}
+ *   onSelect : função chamada ao clicar no card (abre o modal de detalhes)
  */
-function PokemonCard({ pokemon }) {
+function PokemonCard({ pokemon, onSelect }) {
   const { id, name, types, stats } = pokemon
 
   return (
-    <div className="pokemon-card">
+    <div
+      className="pokemon-card"
+      onClick={() => onSelect(pokemon)}
+      role="button"
+      tabIndex={0}
+      aria-label={`Ver detalhes de ${name}`}
+      // Acessibilidade: permite abrir com Enter/Space pelo teclado
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(pokemon) }}
+    >
       {/* Cabeçalho: número e nome */}
       <div className="pokemon-card__header">
         <span className="pokemon-card__id">{formatId(id)}</span>

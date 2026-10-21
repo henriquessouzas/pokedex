@@ -34,3 +34,15 @@ export function getTypes() {
     .map((tipo) => tipo.name)   // pega só o nome
     .sort()                      // ordena alfabeticamente
 }
+
+/**
+ * Retorna os objetos Pokémon correspondentes a uma lista de IDs.
+ * Usado para montar a equipe de cada treinador.
+ *
+ * @param {number[]} ids — array de IDs (ex: trainer.pokemonIds)
+ * @returns {Array} Pokémon encontrados (na mesma ordem dos IDs)
+ */
+export function getPokemonsByIds(ids) {
+  const mapa = new Map(data.pokemon.map((p) => [p.id, p]))
+  return ids.map((id) => mapa.get(id)).filter(Boolean)
+}

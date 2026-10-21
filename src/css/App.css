@@ -1,24 +1,9 @@
 /* =============================================
-   App — layout global da aplicação
+   App — layout global
    ============================================= */
 
-/* Reset básico */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-}
-
-/* Wrapper da SearchBar: centraliza abaixo do header */
 .app__search-wrapper {
   display: flex;
   justify-content: center;
-  padding: 20px 24px 4px;
+  padding: 1.25rem 1.5rem 0.25rem;
 }

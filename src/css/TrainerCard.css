@@ -1,0 +1,110 @@
+/* =============================================
+   TrainerCard — card de treinador
+   ============================================= */
+
+.trainer-card {
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trainer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Linha superior: avatar + nome + badges ── */
+.trainer-card__info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Círculo colorido com a inicial do nome */
+.trainer-card__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #cc0000;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.trainer-card__name {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.trainer-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.trainer-card__badge-icon {
+  font-size: 0.9rem;
+}
+
+/* ── Grade de Pokémon ── */
+.trainer-card__team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Botão de miniatura de Pokémon */
+.trainer-card__pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: #f7f7f7;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 6px 4px 4px;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, transform 0.1s;
+  width: 68px;
+}
+
+.trainer-card__pokemon:hover {
+  border-color: #cc0000;
+  background-color: #fff0f0;
+  transform: translateY(-2px);
+}
+
+.trainer-card__pokemon:focus-visible {
+  outline: 2px solid #cc0000;
+  outline-offset: 2px;
+}
+
+.trainer-card__pokemon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.trainer-card__pokemon-name {
+  font-size: 0.62rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 64px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

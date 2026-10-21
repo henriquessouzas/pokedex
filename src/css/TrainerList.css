@@ -1,0 +1,13 @@
+/* =============================================
+   TrainerList — grade de cards de treinadores
+   ============================================= */
+
+.trainer-list {
+  display: grid;
+  /* Cards mais largos que os de Pokémon para caber a equipe */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

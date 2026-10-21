@@ -1,60 +1,64 @@
 /* =============================================
-   Header — barra superior da Pokédex
+   Header — barra superior com gradiente
    ============================================= */
 
 .header {
-  background-color: #cc0000;
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 60%, var(--color-primary-light) 100%);
   color: #fff;
-  padding: 0 24px;         /* padding lateral; vertical vem das abas */
+  padding: 0 1.5rem;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 10px rgba(204, 0, 0, 0.35);
+  /* Faixa preta sutil na base (detalhe Pokédex) */
+  border-bottom: 3px solid rgba(0, 0, 0, 0.25);
 }
 
 .header__inner {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 12px;
-  height: 56px;
+  gap: 0.75rem;
+  height: var(--header-height);
 }
 
 .header__icon {
   font-size: 1.3rem;
   color: #fff;
-  line-height: 1;
   flex-shrink: 0;
+  /* Simula a luz da Pokédex com brilho */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
 }
 
 .header__title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-size: var(--font-size-xl);
+  font-weight: 900;
+  letter-spacing: 1.5px;
   flex-shrink: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* ── Abas de navegação ── */
+/* ── Abas ── */
 .header__nav {
   display: flex;
   align-items: stretch;
-  gap: 4px;
-  margin-left: auto;   /* empurra as abas para a direita */
+  gap: 0.25rem;
+  margin-left: auto;
   height: 100%;
 }
 
 .header__tab {
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 0 16px;
-  cursor: pointer;
   border-bottom: 3px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0 1.1rem;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
   white-space: nowrap;
 }
 
@@ -63,7 +67,6 @@
   border-bottom-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Aba ativa: sublinhado branco sólido */
 .header__tab--active {
   color: #fff;
   border-bottom-color: #fff;

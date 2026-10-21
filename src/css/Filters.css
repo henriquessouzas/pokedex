@@ -5,43 +5,50 @@
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
   justify-content: center;
-  padding: 12px 24px 4px;
-  max-width: 1200px;
+  padding: 0.75rem 1.5rem 0.25rem;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
 /* Botão base */
 .filters__btn {
   cursor: pointer;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 5px 14px;
-  border-radius: 20px;
-  border: 2px solid #ccc;
-  background-color: #fff;
-  color: #555;
-  transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
-  letter-spacing: 0.3px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  letter-spacing: 0.4px;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .filters__btn:hover {
-  border-color: #aaa;
+  border-color: #bbb;
   background-color: #f0f0f0;
   transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Estado ativo — sobrescrito inline com a cor do tipo via style prop */
+/* Ativo — fundo colorido injetado via style prop pelo componente */
 .filters__btn--active {
   color: #fff;
   border-color: transparent;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Botão "Todos" ativo usa o vermelho da Pokédex */
+/* "Todos" ativo usa a cor primária */
 .filters__btn--all.filters__btn--active {
-  background-color: #cc0000;
-  border-color: #cc0000;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
   color: #fff;
 }

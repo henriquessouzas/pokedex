@@ -1,0 +1,77 @@
+/* =============================================
+   index.css — variáveis globais e reset base
+   ============================================= */
+
+:root {
+  /* ── Paleta principal (tema Pokédex) ── */
+  --color-primary:       #cc0000;   /* vermelho Pokédex */
+  --color-primary-dark:  #990000;   /* vermelho escuro para gradiente */
+  --color-primary-light: #ff3333;   /* vermelho claro */
+
+  --color-bg:            #f0f2f5;   /* fundo geral levemente azulado */
+  --color-surface:       #ffffff;   /* fundo dos cards */
+  --color-surface-alt:   #f7f8fa;   /* fundo alternativo (imagens, etc.) */
+
+  --color-text:          #1a1a2e;   /* texto principal */
+  --color-text-muted:    #6b7280;   /* texto secundário */
+  --color-border:        #e5e7eb;   /* bordas suaves */
+
+  /* ── Sombras ── */
+  --shadow-sm:  0 1px 4px  rgba(0, 0, 0, 0.08);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg:  0 8px 28px rgba(0, 0, 0, 0.18);
+  --shadow-xl:  0 16px 48px rgba(0, 0, 0, 0.25);
+
+  /* ── Bordas arredondadas ── */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  18px;
+  --radius-full: 9999px;
+
+  /* ── Tipografia ── */
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-size-xs:  0.7rem;
+  --font-size-sm:  0.8rem;
+  --font-size-md:  0.95rem;
+  --font-size-lg:  1.1rem;
+  --font-size-xl:  1.4rem;
+
+  /* ── Transições ── */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  /* ── Layout ── */
+  --max-width: 1280px;
+  --header-height: 60px;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}

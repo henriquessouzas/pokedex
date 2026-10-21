@@ -22,12 +22,17 @@ function PokemonCard({ pokemon }) {
         <h2 className="pokemon-card__name">{name}</h2>
       </div>
 
-      {/* Imagem placeholder — será substituída no commit 5 */}
+      {/* Sprite oficial via PokeAPI — sem fetch, só URL direta */}
       <div className="pokemon-card__image-wrapper">
         <img
           className="pokemon-card__image"
-          src="https://placehold.co/96x96?text=?"
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
           alt={name}
+          // onError: se a imagem não carregar, exibe um fallback genérico
+          onError={(e) => {
+            e.currentTarget.onerror = null // evita loop infinito
+            e.currentTarget.src = 'https://placehold.co/96x96?text=?'
+          }}
         />
       </div>
 

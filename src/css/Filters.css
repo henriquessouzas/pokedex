@@ -1,0 +1,47 @@
+/* =============================================
+   Filters — barra de botões de tipo
+   ============================================= */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px 24px 4px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Botão base */
+.filters__btn {
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  color: #555;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+
+.filters__btn:hover {
+  border-color: #aaa;
+  background-color: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+/* Estado ativo — sobrescrito inline com a cor do tipo via style prop */
+.filters__btn--active {
+  color: #fff;
+  border-color: transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Botão "Todos" ativo usa o vermelho da Pokédex */
+.filters__btn--all.filters__btn--active {
+  background-color: #cc0000;
+  border-color: #cc0000;
+  color: #fff;
+}

@@ -1,35 +1,36 @@
 import { useState } from 'react'
-import { getPokemons, getTypes } from './data/pokedex.js'
+import { getPokemons, getTypes, getTrainers } from './data/pokedex.js'
 import Header from './components/Header.jsx'
 import SearchBar from './components/SearchBar.jsx'
 import Filters from './components/Filters.jsx'
 import PokemonList from './components/PokemonList.jsx'
 import PokemonDetails from './components/PokemonDetails.jsx'
+import TrainerList from './components/TrainerList.jsx'
 import './css/App.css'
 
 // Dados estáticos carregados uma única vez fora do componente
 const todosPokemons = getPokemons()
 const tipos         = getTypes()
+const treinadores   = getTrainers()
 
 /**
  * App — componente raiz da Pokédex
- * Gerencia pesquisa, filtro de tipo e o Pokémon selecionado para o modal
+ * Gerencia: aba ativa, pesquisa, filtro de tipo e modal de detalhes
  */
 function App() {
-  const [search, setSearch]               = useState('')   // texto da busca
-  const [selectedType, setSelectedType]   = useState('')   // "" = Todos
-  const [selectedPokemon, setSelectedPokemon] = useState(null) // modal
+  const [view, setView]                     = useState('pokedex')   // aba ativa
+  const [search, setSearch]                 = useState('')
+  const [selectedType, setSelectedType]     = useState('')
+  const [selectedPokemon, setSelectedPokemon] = useState(null)
 
-  // ─── Estado derivado ─────────────────────────────────────────────────────
+  // ─── Estado derivado: lista filtrada (só usada na aba Pokédex) ────────────
   const pokemonsFiltrados = todosPokemons.filter((pokemon) => {
-    // 1) Pesquisa por nome (parcial, case-insensitive) ou ID exato
     const termo = search.trim().toLowerCase()
     const batePesquisa =
       termo === '' ||
       pokemon.name.toLowerCase().includes(termo) ||
       String(pokemon.id) === termo
 
-    // 2) Filtro de tipo: qualquer tipo do Pokémon deve corresponder
     const bateTipo =
       selectedType === '' ||
       pokemon.types.some((t) => t.name === selectedType)
@@ -37,30 +38,48 @@ function App() {
     return batePesquisa && bateTipo
   })
 
+  // Abre o modal de detalhes (compartilhado entre as duas abas)
+  function abrirDetalhes(pokemon) {
+    setSelectedPokemon(pokemon)
+  }
+
   return (
     <>
-      <Header />
+      {/* Header recebe a view e o handler de troca de aba */}
+      <Header view={view} onChangeView={setView} />
 
-      <div className="app__search-wrapper">
-        <SearchBar
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+      {/* ── Aba Pokédex ── */}
+      {view === 'pokedex' && (
+        <>
+          <div className="app__search-wrapper">
+            <SearchBar
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+
+          <Filters
+            types={tipos}
+            selectedType={selectedType}
+            onSelectType={setSelectedType}
+          />
+
+          <PokemonList
+            pokemons={pokemonsFiltrados}
+            onSelect={abrirDetalhes}
+          />
+        </>
+      )}
+
+      {/* ── Aba Treinadores ── */}
+      {view === 'treinadores' && (
+        <TrainerList
+          trainers={treinadores}
+          onSelect={abrirDetalhes}
         />
-      </div>
+      )}
 
-      <Filters
-        types={tipos}
-        selectedType={selectedType}
-        onSelectType={setSelectedType}
-      />
-
-      {/* onSelect abre o modal definindo o Pokémon selecionado */}
-      <PokemonList
-        pokemons={pokemonsFiltrados}
-        onSelect={(pokemon) => setSelectedPokemon(pokemon)}
-      />
-
-      {/* Modal renderizado apenas quando há um Pokémon selecionado */}
+      {/* Modal compartilhado — abre em qualquer aba */}
       {selectedPokemon && (
         <PokemonDetails
           pokemon={selectedPokemon}
